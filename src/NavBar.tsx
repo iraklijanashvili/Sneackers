@@ -13,7 +13,7 @@ const CenterFlex = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  padding: 16px 15px;
+  padding: 28px 15px;
 `;
 
 const BorderBottom = styled.div`

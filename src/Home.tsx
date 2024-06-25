@@ -4,7 +4,7 @@ import mainImage from "./assets/mainImage.png";
 import arrow from "./assets/arrow.svg";
 import NavBar from "./NavBar";
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: 100vh;
   overflow-y: scroll;
