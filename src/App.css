@@ -1,0 +1,60 @@
+
+ul {
+    list-style-type: none; /* Remove default bullets */
+    padding: 0;            /* Remove default padding */
+    margin: 0;             /* Remove default margin */
+  }
+  
+  li {
+    margin: 0;             /* Remove default margin */
+    padding: 0;            /* Remove default padding */
+  }
+  
+/* src/App.css */
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Additional global styles */
+html, body {
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+}
+
+/* Reset for block elements */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+
+/* Reset for list elements */
+ol, ul,li {
+  list-style: none;
+}
+
+/* Reset for quotes */
+blockquote, q {
+  quotes: none;
+}
+
+blockquote::before, blockquote::after,
+q::before, q::after {
+  content: '';
+  content: none;
+}
+
+/* Reset for tables */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
