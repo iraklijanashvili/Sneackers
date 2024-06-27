@@ -9,6 +9,7 @@ export const Container = styled.div`
   height: 100vh;
   overflow-y: scroll;
   position: relative;
+  font-family: "DM Sans", sans-serif;
 
   &::-webkit-scrollbar {
     width: 12px;
@@ -44,7 +45,6 @@ const HeaderButton = styled.button`
   cursor: pointer;
   font-size: 18px;
   outline: none;
-  font-family: "DM Sans", sans-serif;
   p {
     color: grey;
     font-family: "Kumbh Sans", sans-serif;

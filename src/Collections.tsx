@@ -11,7 +11,6 @@ const Dflex = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 70px;
-  font-family: "DM Sans", sans-serif;
   width: 100%;
 
   @media (max-width: 1024px) {
