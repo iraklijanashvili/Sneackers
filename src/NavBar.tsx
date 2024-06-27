@@ -8,7 +8,7 @@ import menuIcon from "./assets/menuIcon.svg";
 import iconClose from "./assets/iconClose.svg";
 import { useState } from "react";
 
-const CenterFlex = styled.div`
+const NavContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -49,7 +49,7 @@ interface MenuUlProps {
   padding?: string;
 }
 
-const MenuUl = styled.ul<MenuUlProps>`
+const MenuList = styled.ul<MenuUlProps>`
   display: flex;
   justify-content: center;
   padding: ${(props) => props.padding || "0"};
@@ -62,7 +62,7 @@ const MenuUl = styled.ul<MenuUlProps>`
   }
 `;
 
-const IconContainer = styled(MenuUl)`
+const IconContainer = styled(MenuList)`
   margin-top: 5px;
 `;
 
@@ -70,7 +70,7 @@ interface marginBottomProps {
   marginBottom?: string;
 }
 
-const InputForm = styled.input<marginBottomProps>`
+const SearchInput = styled.input<marginBottomProps>`
   width: 70%;
   height: 24px;
   margin-bottom: ${(props) => props.marginBottom || "0"};
@@ -131,7 +131,7 @@ const SearchContainer = styled.div`
   align-items: center;
 `;
 
-const HeaderButton = styled.button`
+const NavButton = styled.button`
   background-color: transparent;
   border: none;
   border-radius: 0px;
@@ -149,7 +149,7 @@ const HeaderButton = styled.button`
     outline: none;
   }
 `;
-const HeaderButtonBorrder = styled(HeaderButton)`
+const NavButtonBorrder = styled(NavButton)`
   position: relative;
   p {
     color: grey;
@@ -205,7 +205,7 @@ const LiContainer = styled.div<LiContainerProps>`
   padding: ${(props) => props.padding || "0px 20px"};
 `;
 
-const ToggleBtn = styled(HeaderButton)`
+const ToggleBtn = styled(NavButton)`
   @media (min-width: 1025px) {
     display: none;
   }
@@ -245,7 +245,7 @@ const MenuResponsiveContainer = styled.div`
   }
 `;
 
-const CloseButton = styled(HeaderButton)`
+const CloseButton = styled(NavButton)`
   position: fixed;
   top: 5%;
   right: 5%;
@@ -267,39 +267,39 @@ export default function NavBar() {
 
   return (
     <div>
-      <CenterFlex>
-        <HeaderButton>
+      <NavContainer>
+        <NavButton>
           <img src={logo} alt="Logo" />
-        </HeaderButton>
-        <MenuUl>
+        </NavButton>
+        <MenuList>
           <LiContainer>
-            <HeaderButtonBorrder>
+            <NavButtonBorrder>
               <p>Collections</p>
-            </HeaderButtonBorrder>
+            </NavButtonBorrder>
           </LiContainer>
           <LiContainer>
-            <HeaderButtonBorrder>
+            <NavButtonBorrder>
               <p>Men</p>
-            </HeaderButtonBorrder>
+            </NavButtonBorrder>
           </LiContainer>
           <LiContainer>
-            <HeaderButtonBorrder>
+            <NavButtonBorrder>
               <p>Women</p>
-            </HeaderButtonBorrder>
+            </NavButtonBorrder>
           </LiContainer>
           <LiContainer>
-            <HeaderButtonBorrder>
+            <NavButtonBorrder>
               <p>About</p>
-            </HeaderButtonBorrder>
+            </NavButtonBorrder>
           </LiContainer>
           <LiContainer>
-            <HeaderButtonBorrder>
+            <NavButtonBorrder>
               <p>Contact</p>
-            </HeaderButtonBorrder>
+            </NavButtonBorrder>
           </LiContainer>
-        </MenuUl>
+        </MenuList>
         <SearchContainer>
-          <InputForm type="email" placeholder="Search..." />
+          <SearchInput type="email" placeholder="Search..." />
           <SearchBtn>
             <img src={searchIcon} alt="Search" />
           </SearchBtn>
@@ -308,27 +308,27 @@ export default function NavBar() {
           <img src={menuIcon} alt="Menu" />
         </ToggleBtn>
         <IconContainer>
-          <HeaderButton>
+          <NavButton>
             <LiContainer>
               <li>
                 <Icon src={cartIcon} alt="Cart" />
               </li>
             </LiContainer>
-          </HeaderButton>
-          <HeaderButton>
+          </NavButton>
+          <NavButton>
             <LiContainer>
               <li>
                 <Icon src={heartIcon} alt="Heart" />
               </li>
             </LiContainer>
-          </HeaderButton>
-          <HeaderButton>
+          </NavButton>
+          <NavButton>
             <LiContainer>
               <li>
                 <Icon width="25px" height="25px" src={userIcon} alt="" />
               </li>
             </LiContainer>
-          </HeaderButton>
+          </NavButton>
         </IconContainer>
         {menuOpen && (
           <MenuResponsive>
@@ -337,55 +337,55 @@ export default function NavBar() {
             </CloseButton>
             <MenuResponsiveContainer>
               <LiContainer>
-                <HeaderButtonBorrder>
+                <NavButtonBorrder>
                   <p>Collections</p>
-                </HeaderButtonBorrder>
+                </NavButtonBorrder>
               </LiContainer>
               <LiContainer>
-                <HeaderButtonBorrder>
+                <NavButtonBorrder>
                   <p>Men</p>
-                </HeaderButtonBorrder>
+                </NavButtonBorrder>
               </LiContainer>
               <LiContainer>
-                <HeaderButtonBorrder>
+                <NavButtonBorrder>
                   <p>Women</p>
-                </HeaderButtonBorrder>
+                </NavButtonBorrder>
               </LiContainer>
               <LiContainer>
-                <HeaderButtonBorrder>
+                <NavButtonBorrder>
                   <p>About</p>
-                </HeaderButtonBorrder>
+                </NavButtonBorrder>
               </LiContainer>
               <LiContainer>
-                <HeaderButtonBorrder>
+                <NavButtonBorrder>
                   <p>Contact</p>
-                </HeaderButtonBorrder>
+                </NavButtonBorrder>
               </LiContainer>
-              <HeaderButton>
+              <NavButton>
                 <LiContainer padding="30px 0">
                   <li>
                     <Icon width="45px" height="45px" src={cartIcon} alt="" />
                   </li>
                 </LiContainer>
-              </HeaderButton>
-              <HeaderButton>
+              </NavButton>
+              <NavButton>
                 <LiContainer padding="20px 0">
                   <li>
                     <Icon width="45px" height="45px" src={heartIcon} alt="" />
                   </li>
                 </LiContainer>
-              </HeaderButton>
-              <HeaderButton>
+              </NavButton>
+              <NavButton>
                 <LiContainer padding="20px 0">
                   <li>
                     <Icon width="45px" height="45px" src={userIcon} alt="" />
                   </li>
                 </LiContainer>
-              </HeaderButton>
+              </NavButton>
             </MenuResponsiveContainer>
           </MenuResponsive>
         )}
-      </CenterFlex>
+      </NavContainer>
       <BorderBottom />
     </div>
   );

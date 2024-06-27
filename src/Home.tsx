@@ -32,6 +32,7 @@ export const Container = styled.div`
     display: none;
   }
 
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #ff7d19 #f1f1f1;
 `;
