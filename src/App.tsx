@@ -4,6 +4,7 @@ import Men from "./Men";
 import Home from "./Home";
 import Women from "./Women";
 import About from "./About";
+
 function App() {
   return (
     <div>
@@ -12,6 +13,7 @@ function App() {
       {/* <Men /> */}
       {/* <Women /> */}
       <About />
+      {/* <Test /> */}
     </div>
   );
 }

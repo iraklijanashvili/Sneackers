@@ -14,6 +14,7 @@ const NavContainer = styled.div`
   align-items: center;
   width: 100%;
   padding: 28px 15px;
+  background-color: #ffffff;
 `;
 
 const BorderBottom = styled.div`
