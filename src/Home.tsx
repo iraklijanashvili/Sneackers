@@ -2,7 +2,8 @@ import styled from "styled-components";
 import logo from "./assets/logo.svg";
 import mainImage from "./assets/mainImage.png";
 import arrow from "./assets/arrow.svg";
-import NavBar from "./NavBar";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
@@ -64,23 +65,28 @@ const BgImage = styled.div`
   min-height: 100vh;
 `;
 
-const MiddleContainer = styled.div`
+const MiddleContainer = styled(Link)<{ active?: boolean }>`
   display: flex;
   justify-content: center;
+  text-decoration: none;
+  border-bottom: ${({ active }) => (active ? "3px solid #ff7d19" : "none")};
+
   img:first-child {
     padding: 0px 30px;
-    top: 30%;
+    top: 15%;
     position: absolute;
     max-width: 576px;
     width: 100%;
   }
+
   ${HeaderButton} {
     display: flex;
     justify-content: center;
     margin-left: 40px;
   }
+
   ${HeaderButton} img {
-    top: 55%;
+    top: 45%;
     position: absolute;
     max-width: 112px;
     border-radius: 15px;
@@ -94,13 +100,23 @@ const MiddleContainer = styled.div`
 `;
 
 export default function Home() {
+  const location = useLocation();
+  const [activeLink, setActiveLink] = useState(location.pathname);
+
+  const handleNavigation = (path: string) => {
+    setActiveLink(path);
+  };
+
   return (
     <Container>
-      <NavBar />
-      <MiddleContainer>
+      <MiddleContainer
+        to="/collections"
+        active={activeLink === "/collections"}
+        onClick={() => handleNavigation("/collections")}
+      >
         <img src={logo} alt="Logo" />
         <HeaderButton>
-          <img src={arrow} alt="Logo" />
+          <img src={arrow} alt="Arrow" />
         </HeaderButton>
       </MiddleContainer>
       <BgImage />

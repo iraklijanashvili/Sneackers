@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import ProductCard, { ProductCardProps } from "./ProductCard";
-import NavBar from "../NavBar";
 
 interface ProductListProps {
   title: string;
@@ -42,7 +41,6 @@ const CardContainer = styled.div`
 `;
 const ProductList: React.FC<ProductListProps> = ({ title, products }) => (
   <>
-    <NavBar />
     <PageContainer>
       <TitleContainer>
         <Title>{title}</Title>

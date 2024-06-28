@@ -7,6 +7,7 @@ import userIcon from "./assets/userIcon.svg";
 import menuIcon from "./assets/menuIcon.svg";
 import iconClose from "./assets/iconClose.svg";
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const NavContainer = styled.div`
   display: flex;
@@ -150,7 +151,7 @@ const NavButton = styled.button`
     outline: none;
   }
 `;
-const NavButtonBorrder = styled(NavButton)`
+const NavButtonBorrder = styled(NavButton)<{ active?: boolean }>`
   position: relative;
   p {
     color: grey;
@@ -166,7 +167,7 @@ const NavButtonBorrder = styled(NavButton)`
   &::after {
     content: "";
     position: absolute;
-    width: 0;
+    width: ${({ active }) => (active ? "100%" : "0")};
     height: 3px;
     display: block;
     background: #ff7d19;
@@ -261,132 +262,136 @@ const CloseButton = styled(NavButton)`
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   const handleToggleBtn = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const navigate = useNavigate();
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    setMenuOpen(false); // Close the menu if it's open
+  };
+
   return (
     <div>
       <NavContainer>
-        <NavButton>
+        <NavButton onClick={() => handleNavigation("/")}>
           <img src={logo} alt="Logo" />
         </NavButton>
         <MenuList>
           <LiContainer>
-            <NavButtonBorrder>
+            <NavButtonBorrder
+              onClick={() => handleNavigation("/collections")}
+              active={location.pathname === "/collections"}
+            >
               <p>Collections</p>
             </NavButtonBorrder>
           </LiContainer>
           <LiContainer>
-            <NavButtonBorrder>
+            <NavButtonBorrder
+              onClick={() => handleNavigation("/men")}
+              active={location.pathname === "/men"}
+            >
               <p>Men</p>
             </NavButtonBorrder>
           </LiContainer>
           <LiContainer>
-            <NavButtonBorrder>
+            <NavButtonBorrder
+              onClick={() => handleNavigation("/women")}
+              active={location.pathname === "/women"}
+            >
               <p>Women</p>
             </NavButtonBorrder>
           </LiContainer>
           <LiContainer>
-            <NavButtonBorrder>
+            <NavButtonBorrder
+              onClick={() => handleNavigation("/about")}
+              active={location.pathname === "/about"}
+            >
               <p>About</p>
             </NavButtonBorrder>
           </LiContainer>
           <LiContainer>
-            <NavButtonBorrder>
+            <NavButtonBorrder
+              onClick={() => handleNavigation("/contact")}
+              active={location.pathname === "/contact"}
+            >
               <p>Contact</p>
             </NavButtonBorrder>
           </LiContainer>
         </MenuList>
-        <SearchContainer>
-          <SearchInput type="email" placeholder="Search..." />
-          <SearchBtn>
-            <img src={searchIcon} alt="Search" />
-          </SearchBtn>
-        </SearchContainer>
-        <ToggleBtn onClick={handleToggleBtn}>
-          <img src={menuIcon} alt="Menu" />
-        </ToggleBtn>
-        <IconContainer>
-          <NavButton>
-            <LiContainer>
-              <li>
-                <Icon src={cartIcon} alt="Cart" />
-              </li>
-            </LiContainer>
-          </NavButton>
-          <NavButton>
-            <LiContainer>
-              <li>
-                <Icon src={heartIcon} alt="Heart" />
-              </li>
-            </LiContainer>
-          </NavButton>
-          <NavButton>
-            <LiContainer>
-              <li>
-                <Icon width="25px" height="25px" src={userIcon} alt="" />
-              </li>
-            </LiContainer>
-          </NavButton>
+        <IconContainer padding="0px">
+          <LiContainer>
+            <SearchContainer>
+              <SearchInput placeholder="Search..." />
+              <SearchBtn>
+                <Icon src={searchIcon} />
+              </SearchBtn>
+            </SearchContainer>
+          </LiContainer>
+          <LiContainer>
+            <NavButton onClick={() => handleNavigation("/cart")}>
+              <Icon src={cartIcon} />
+            </NavButton>
+          </LiContainer>
+          <LiContainer>
+            <NavButton>
+              <Icon src={heartIcon} />
+            </NavButton>
+          </LiContainer>
+          <LiContainer>
+            <NavButton>
+              <Icon src={userIcon} />
+            </NavButton>
+          </LiContainer>
+          <LiContainer>
+            <ToggleBtn onClick={handleToggleBtn}>
+              <Icon src={menuIcon} />
+            </ToggleBtn>
+          </LiContainer>
         </IconContainer>
-        {menuOpen && (
-          <MenuResponsive>
-            <CloseButton onClick={handleToggleBtn}>
-              <img src={iconClose} alt="Close" />
-            </CloseButton>
-            <MenuResponsiveContainer>
-              <LiContainer>
-                <NavButtonBorrder>
-                  <p>Collections</p>
-                </NavButtonBorrder>
-              </LiContainer>
-              <LiContainer>
-                <NavButtonBorrder>
-                  <p>Men</p>
-                </NavButtonBorrder>
-              </LiContainer>
-              <LiContainer>
-                <NavButtonBorrder>
-                  <p>Women</p>
-                </NavButtonBorrder>
-              </LiContainer>
-              <LiContainer>
-                <NavButtonBorrder>
-                  <p>About</p>
-                </NavButtonBorrder>
-              </LiContainer>
-              <LiContainer>
-                <NavButtonBorrder>
-                  <p>Contact</p>
-                </NavButtonBorrder>
-              </LiContainer>
-              <NavButton>
-                <LiContainer padding="30px 0">
-                  <li>
-                    <Icon width="45px" height="45px" src={cartIcon} alt="" />
-                  </li>
-                </LiContainer>
-              </NavButton>
-              <NavButton>
-                <LiContainer padding="20px 0">
-                  <li>
-                    <Icon width="45px" height="45px" src={heartIcon} alt="" />
-                  </li>
-                </LiContainer>
-              </NavButton>
-              <NavButton>
-                <LiContainer padding="20px 0">
-                  <li>
-                    <Icon width="45px" height="45px" src={userIcon} alt="" />
-                  </li>
-                </LiContainer>
-              </NavButton>
-            </MenuResponsiveContainer>
-          </MenuResponsive>
-        )}
       </NavContainer>
+      {menuOpen && (
+        <MenuResponsive>
+          <CloseButton onClick={handleToggleBtn}>
+            <Icon src={iconClose} />
+          </CloseButton>
+          <MenuResponsiveContainer>
+            <NavButtonBorrder
+              onClick={() => handleNavigation("/collections")}
+              active={location.pathname === "/collections"}
+            >
+              <p>Collections</p>
+            </NavButtonBorrder>
+            <NavButtonBorrder
+              onClick={() => handleNavigation("/men")}
+              active={location.pathname === "/men"}
+            >
+              <p>Men</p>
+            </NavButtonBorrder>
+            <NavButtonBorrder
+              onClick={() => handleNavigation("/women")}
+              active={location.pathname === "/women"}
+            >
+              <p>Women</p>
+            </NavButtonBorrder>
+            <NavButtonBorrder
+              onClick={() => handleNavigation("/about")}
+              active={location.pathname === "/about"}
+            >
+              <p>About</p>
+            </NavButtonBorrder>
+            <NavButtonBorrder
+              onClick={() => handleNavigation("/contact")}
+              active={location.pathname === "/contact"}
+            >
+              <p>Contact</p>
+            </NavButtonBorrder>
+          </MenuResponsiveContainer>
+        </MenuResponsive>
+      )}
       <BorderBottom />
     </div>
   );

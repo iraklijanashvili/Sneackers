@@ -8,41 +8,6 @@ import NextOriginal from "./assets/nextjsOriginal.svg";
 import MyImage from "./assets/myImage.jpeg";
 import Future from "./assets/future.svg";
 
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  overflow-y: scroll;
-  position: relative;
-  font-family: "DM Sans", sans-serif;
-  scroll-snap-type: y mandatory;
-
-  &::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #ff7d19;
-    border-radius: 10px;
-    border: 3px solid #f1f1f1;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: #ff5500;
-  }
-
-  &::-webkit-scrollbar-button {
-    display: none;
-  }
-
-  overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: #ff7d19 #f1f1f1;
-`;
-
 const NavBarWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -55,17 +20,24 @@ const Section = styled.div`
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; // Changed from center to flex-start
+  justify-content: flex-start;
   align-items: center;
   transition: opacity 0.5s ease-in-out;
-  padding: 100px 20px 20px; // Increased top padding
+  padding: 100px 20px 20px;
   box-sizing: border-box;
-  margin-top: 0px; // Removed margin-top
+  margin-top: 0px;
 
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-around;
-    padding-top: 120px; // Increased top padding for larger screens
+    padding-top: 120px;
+  }
+
+  @media (min-width: 1024px) {
+    min-height: 80vh;
+    padding-top: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 `;
 
@@ -76,18 +48,22 @@ const TextContainer = styled.div`
   align-items: start;
   max-width: 100%;
   margin-bottom: 20px;
-  width: 100%; // Added to ensure full width on small screens
+  width: 100%;
   padding: 0px 30px;
 
   @media (min-width: 768px) {
     max-width: 50%;
     margin-bottom: 0;
   }
+
+  @media (min-width: 1024px) {
+    max-width: 45%;
+  }
 `;
 
 const HeaderText = styled.h2`
   color: hsl(26, 100%, 55%, 100%);
-  font-size: 22px; // Slightly reduced font size for very small screens
+  font-size: 22px;
   line-height: 26px;
   font-weight: 800;
   margin-bottom: 15px;
@@ -98,6 +74,12 @@ const HeaderText = styled.h2`
     line-height: 28px;
     margin-bottom: 20px;
     margin-top: 30px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 24px;
+    line-height: 24px;
+    margin-top: 0;
   }
 `;
 
@@ -117,6 +99,10 @@ const StyledImage = styled.img`
 
   @media (min-width: 768px) {
     max-width: 448px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 400px;
   }
 `;
 
@@ -150,11 +136,16 @@ const StyledMyImage = styled.img`
     max-width: 448px;
     max-height: 328px;
   }
+
+  @media (min-width: 1024px) {
+    max-width: 400px;
+    max-height: 300px;
+  }
 `;
 
 const About: React.FC = () => {
   return (
-    <Container>
+    <>
       <NavBarWrapper>
         <NavBar />
       </NavBarWrapper>
@@ -230,7 +221,7 @@ const About: React.FC = () => {
           <StyledImage src={Future} alt="Future Image" />
         </StyledImageContainer>
       </Section>
-    </Container>
+    </>
   );
 };
 

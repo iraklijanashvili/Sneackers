@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import NavBar from "./NavBar";
 import Product2 from "./assets/productImage2.png";
 import Product3 from "./assets/productImage3.png";
 import Product4 from "./assets/productImage4.jpg";
-import { Container } from "./Home";
 import { useState } from "react";
 
 const Dflex = styled.div`
@@ -224,8 +222,7 @@ export default function Collections() {
   };
 
   return (
-    <Container>
-      <NavBar />
+    <>
       <Dflex>
         <ContaineOne
           onMouseMove={handleMouseMove}
@@ -268,6 +265,6 @@ export default function Collections() {
           </ContainerThreeText>
         </ContainerThreeInner>
       </ContainerThree>
-    </Container>
+    </>
   );
 }
