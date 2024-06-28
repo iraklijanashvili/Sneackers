@@ -41,9 +41,7 @@ const ContaineOne = styled(MovingContainer)`
   height: 300px;
   margin-right: 20px;
   border-radius: 20px;
-
   background: rgb(106, 106, 106);
-
   background: linear-gradient(
     0deg,
     rgba(106, 106, 106, 1) 49%,
@@ -75,7 +73,21 @@ const ContaineOneImage = styled.img`
 const ContaineOneText = styled.div`
   color: white;
   padding: 0px 20px;
-
+  font-size: 36px;
+  font-weight: 40px;
+  h1 {
+    font-weight: bold;
+    font-size: 46px;
+  }
+  h1 span {
+    color: #ff7d19;
+  }
+  h2 {
+    margin-top: 10px;
+  }
+  h2 span {
+    border-bottom: 1px solid white;
+  }
   @media (max-width: 1024px) {
     width: 100%;
     border-radius: 20px;
@@ -123,6 +135,13 @@ const ContainerTwoText = styled.div`
   background-clip: text;
   color: transparent;
   text-align: center;
+  span {
+    color: white;
+    font-size: 20px;
+    display: block;
+    font-weight: lighter;
+    margin-top: 10px;
+  }
 `;
 
 const ContainerThree = styled(MovingContainer)`
@@ -130,7 +149,6 @@ const ContainerThree = styled(MovingContainer)`
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  font-family: "DM Sans", sans-serif;
 
   @media (max-width: 1024px) {
     width: 100%;
