@@ -78,12 +78,14 @@ const ContaineOneText = styled.div`
   h1 {
     font-weight: bold;
     font-size: 46px;
+    margin-top: 10px;
   }
   h1 span {
     color: #ff7d19;
   }
   h2 {
     margin-top: 10px;
+    font-size: 20px;
   }
   h2 span {
     border-bottom: 1px solid white;
