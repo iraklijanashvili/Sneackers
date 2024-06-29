@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "./NavBar";
 import styled from "styled-components";
 import webSiteImage from "./assets/webSiteImage.png";
 import ReactOriginal from "./assets/reactOriginal.svg";
@@ -7,13 +6,6 @@ import TypescriptOriginal from "./assets/typescriptOriginal.svg";
 import NextOriginal from "./assets/nextjsOriginal.svg";
 import MyImage from "./assets/myImage.jpeg";
 import Future from "./assets/future.svg";
-
-const NavBarWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-`;
 
 const Section = styled.div`
   min-height: 100vh;
@@ -146,9 +138,6 @@ const StyledMyImage = styled.img`
 const About: React.FC = () => {
   return (
     <>
-      <NavBarWrapper>
-        <NavBar />
-      </NavBarWrapper>
       <Section style={{ backgroundColor: "white" }}>
         <TextContainer>
           <HeaderText>Project Overview</HeaderText>

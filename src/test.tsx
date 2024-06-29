@@ -7,7 +7,7 @@ import userIcon from "./assets/userIcon.svg";
 import menuIcon from "./assets/menuIcon.svg";
 import iconClose from "./assets/iconClose.svg";
 import { useState } from "react";
-import { useNavigate, useLocation, To } from "react-router-dom";
+import { useNavigate, To } from "react-router-dom";
 
 const CenterFlex = styled.div`
   display: flex;
@@ -136,9 +136,10 @@ const HeaderButton = styled.button`
   }
 `;
 
-const HeaderButtonBorder = styled(HeaderButton)<{ active?: boolean }>`
+const HeaderButtonBorder = styled(HeaderButton)`
   position: relative;
   p {
+    color: grey;
     font-family: "Kumbh Sans", sans-serif;
     font-optical-sizing: auto;
     margin: 5px;
@@ -146,8 +147,8 @@ const HeaderButtonBorder = styled(HeaderButton)<{ active?: boolean }>`
   &::after {
     content: "";
     position: absolute;
-    width: ${(props) => (props.active ? "100%" : "0")};
-    height: 2px;
+    width: 0;
+    height: 3px;
     display: block;
     background: #ff7d19;
     transition: width 250ms ease-in-out;
@@ -229,10 +230,6 @@ const CloseButton = styled(HeaderButton)`
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
-  const handleCartClick = () => {
-    navigate("/cart");
-  };
 
   const handleToggleBtn = () => {
     setMenuOpen(!menuOpen);
@@ -254,7 +251,6 @@ export default function NavBar() {
             <LiContainer key={item}>
               <HeaderButtonBorder
                 onClick={() => handleNavigation(`/${item.toLowerCase()}`)}
-                active={location.pathname === `/${item.toLowerCase()}`}
               >
                 <p>{item}</p>
               </HeaderButtonBorder>
@@ -272,7 +268,7 @@ export default function NavBar() {
         </ToggleBtn>
         <IconContainer>
           {[cartIcon, heartIcon, userIcon].map((icon, index) => (
-            <HeaderButton key={index} onClick={handleCartClick}>
+            <HeaderButton key={index}>
               <LiContainer>
                 <li>
                   <Icon src={icon} alt="" />
@@ -292,14 +288,13 @@ export default function NavBar() {
               <LiContainer key={item}>
                 <HeaderButtonBorder
                   onClick={() => handleNavigation(`/${item.toLowerCase()}`)}
-                  active={location.pathname === `/${item.toLowerCase()}`}
                 >
                   <p>{item}</p>
                 </HeaderButtonBorder>
               </LiContainer>
             ))}
             {[cartIcon, heartIcon, userIcon].map((icon, index) => (
-              <HeaderButton key={index} onClick={handleCartClick}>
+              <HeaderButton key={index}>
                 <LiContainer padding="20px 0">
                   <li>
                     <Icon width="45px" height="45px" src={icon} alt="" />

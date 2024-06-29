@@ -163,7 +163,7 @@ const ContainerThreeInner = styled.div`
   display: flex;
   max-width: 1320px;
   background-color: #ff7d19;
-  height: 350px;
+  height: 550px;
   border-radius: 20px;
   background-image: radial-gradient(
     88% 100% at top,
@@ -175,6 +175,7 @@ const ContainerThreeInner = styled.div`
 
   @media (max-width: 1024px) {
     max-width: 870px;
+    height: 350px;
   }
 `;
 
